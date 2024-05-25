@@ -36,8 +36,8 @@ const LayoutListSpaces = ({initialState, state, setState, type = 'none', spacesL
                         value={state.sortDir || "None"} onChange={(e) => handelSetSortDir(e)}
                         className="ml-2 px-2 py-1 border-[0.5px] border-[#B2B2B2] rounded-xl outline-none">
                         <option value="None">Sắp Xếp Theo:</option>
-                        <option value="ASC">Giá Từ Thấp Đến Cao</option>
-                        <option value="DESC">Giá Từ Cao Đến Thấp</option>
+                        <option value="ASC">Giá Tăng Dần</option>
+                        <option value="DESC">Giá Giảm Dần</option>
                     </select>
                 </div>
 
@@ -46,7 +46,7 @@ const LayoutListSpaces = ({initialState, state, setState, type = 'none', spacesL
                         return <Space key={space?.id} typeSpace={type} spaceValue={space}/>
                     }) : <div
                         className="mt-44 col-span-1 lg:col-span-2 text-2xl text-primaryColor text-center font-bold">Không
-                        Tìm Thấy Space Nào!</div>}
+                        Tìm thấy sản phẩm nào</div>}
                 </div>
             </div>
             {/*pagination*/}

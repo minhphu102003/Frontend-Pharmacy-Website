@@ -10,3 +10,13 @@ export const getCategories = async () => {
         return error
     }
 };
+
+const CATEGORIE_ENDPOINT = "/api/category/categorie"
+
+export const getCategoryById = async(paramsObject) =>{
+    try{
+        return await request.get(CATEGORIE_ENDPOINT, {params:paramsObject})
+    }catch(err){
+        return err;
+    }
+}

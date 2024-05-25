@@ -39,8 +39,8 @@ export default function HeaderStats({ data, ...props }) {
               </div>
               <div className="w-full px-4 lg:w-6/12 xl:w-3/12">
                 <CardStats
-                  statSubtitle="Number of Owner account"
-                  statTitle={data.NumberOwnerAccount}
+                  statSubtitle="Number of Staff account"
+                  statTitle={data.NumberStaffAccount}
                   statArrow="down"
                   statPercent=""
                   statPercentColor="text-orange-500"
@@ -51,13 +51,9 @@ export default function HeaderStats({ data, ...props }) {
               </div>
               <div className="w-full px-4 lg:w-6/12 xl:w-3/12">
                 <CardStats
-                  statSubtitle="Number of Post space"
+                  statSubtitle="Number of Blog"
                   statTitle={
-                    data.NumberPostSpaceHadRent +
-                    data.NumberPostSpaceNotRent +
-                    data.NumberPostSharingSpace +
-                    data.NumberPostSpaceRejected
-                  }
+                    data.NumberBlog}
                   statArrow="up"
                   statPercent=""
                   statPercentColor="text-emerald-500"

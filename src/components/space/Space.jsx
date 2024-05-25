@@ -120,7 +120,7 @@ const Space = ({typeSpace = "none", spaceValue}) => {
 
         <>
             <div className="py-4">
-                <Link to={`${typeSpace === "sharing" ? `/shares/${spaceValue?.id}` : `/spaces/${spaceValue?.id}`}`}>
+                <Link to={`${typeSpace === "sharing" ? `/shares/${spaceValue?.medicine_id}` : `/spaces/${spaceValue?.medicine_id}`}`}>
                     <div
                         className="w-auto mx-3 rounded-xl hover:shadow-xl transform transition-all translate-y-0 hover:-translate-y-2">
                         <div className="h-[300px] w-full relative">
@@ -148,7 +148,7 @@ const Space = ({typeSpace = "none", spaceValue}) => {
                         <div className="rounded-b-xl border-gray-400 border-[1px]">
                             <div className="px-3 py-3 ">
                                 <p className="text-sm font-semibold text-primaryColor ">{spaceValue?.categoryId?.categoryName || "Null"}</p>
-                                <h4 className="text-xm font-bold text-textBoldColor ">{spaceValue?.ownerId?.name || "Tên Owner"}</h4>
+                                <h4 className="text-xm font-bold text-textBoldColor ">{spaceValue?.medicineName || "Tên Owner"}</h4>
                                 <div className="flex justify-between items-center mb-2">
                                     <p className="text-xm font-bold text-textBoldColor">{formatNumber(spaceValue?.price) + "đ" || "Null"}
                                         <span

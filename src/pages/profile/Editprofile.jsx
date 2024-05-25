@@ -6,6 +6,7 @@ import AuthContext from "../../context/authProvider";
 import {useEffect, useContext, useState} from "react";
 import ChangePassword from "../../components/changepassword/ChangePassword";
 import {ProfileEdit} from "../index";
+import moment from 'moment';
 
 const Editprofile = () => {
 
@@ -66,7 +67,7 @@ const Editprofile = () => {
                         </div>
                     </div>
                     <InputReadOnly
-                        value={`#${user?.id}` || ""}
+                        value={`#${user?.user_id}` || ""}
                         direction="flex-row"
                         label="Mã Thành Viên"
                     />
@@ -77,7 +78,7 @@ const Editprofile = () => {
                     />
 
                     <InputReadOnly
-                        value={user?.name}
+                        value={user?.username}
                         direction="flex-row"
                         label="Tên Thành Viên"
                     />
@@ -97,19 +98,25 @@ const Editprofile = () => {
                         </div>
                     </div>
                     <InputReadOnly
-                        value={user?.phone}
+                        value={user?.phoneNumber}
                         direction="flex-row"
                         label="Số Điện Thoại"
                     />
                     <InputReadOnly
-                        value={user?.dateOfBirth}
+                        value={user?.dob === null || user?.dob=== undefined? "":moment(user?.dob).format('MM/DD/YYYY')}
                         direction="flex-row"
                         label="Ngày Sinh"
                     />
                     <InputReadOnly
-                        value={user?.address}
+                        value={
+                            user?.gender === null || user?.gender === undefined
+            ? ""
+            : user.gender === 1
+            ? "Nam"
+            : "Nữ"
+                        }
                         direction="flex-row"
-                        label="Địa chỉ"
+                        label="Giới tính"
                     />
 
                 </div>

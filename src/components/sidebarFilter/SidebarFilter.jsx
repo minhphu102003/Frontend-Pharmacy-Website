@@ -21,19 +21,19 @@ const SidebarFilter = ({setState}) => {
         {
             id: 1,
             areaFrom: 0,
-            areaTo: 20
+            areaTo: "100.000"
         }, {
             id: 2,
-            areaFrom: 20,
-            areaTo: 40
+            areaFrom: "100.000",
+            areaTo: "300.000"
         }, {
             id: 3,
-            areaFrom: 40,
-            areaTo: 60
+            areaFrom: "300.000",
+            areaTo: "500.000"
         }, {
             id: 4,
-            areaFrom: 60,
-            areaTo: 80
+            areaFrom: "500.000",
+            areaTo: "1.000.000"
         },
     ]
 
@@ -81,11 +81,11 @@ const SidebarFilter = ({setState}) => {
             {/*Filter*/}
             <div className="border-[0.5px] border-[#B2B2B2] rounded-lg">
                 <div className="p-4 bg-[#f4f4f4] rounded-t-lg">
-                    <h4 className="text-textBoldColor text-xm font-bold">Lọc Không Gian</h4>
+                    <h4 className="text-textBoldColor text-xm font-bold">Bộ lọc</h4>
                 </div>
                 <div className="border-b-[0.5px] border-[#B2B2B2] pb-4">
-                    <p className="p-4 text-textBoldColor text-xm font-semibold ">Diện tích: </p>
-                    <div className="grid grid-cols-2 gap-3 pl-4 ">
+                    <p className="p-4 text-textBoldColor text-xm font-semibold ">Khoảng giá: </p>
+                    <div className="grid grid-cols-1 gap-3 pl-4 ">
                         {
                             areaValue.map((area) => {
                                 return (<div className="" key={area.id}>
@@ -93,21 +93,21 @@ const SidebarFilter = ({setState}) => {
                                            value={area.id}
                                            onClick={(e) => handleSetArea(e)}
                                            name="area"/>
-                                    <label className="pl-2" htmlFor="">{area.areaFrom}m<sup>2</sup> - {area.areaTo}m<sup>2</sup></label>
+                                    <label className="pl-2" htmlFor="">{area.areaFrom} đ - {area.areaTo} đ</label>
                                 </div>)
                             })
                         }
                     </div>
                 </div>
-                <div className="pb-4 h-[120px]">
+                {/* <div className="pb-4 h-[120px]">
                     <p className="p-4 text-textBoldColor text-xm font-semibold ">Giá: </p>
                     <MultiRangeSlider min={100000} max={12000000} onRangeChange={handleRangeChange}/>
-                </div>
+                </div> */}
             </div>
             {/* Top Rate   */}
             <div className="border-[0.5px] border-[#B2B2B2] rounded-lg mt-6">
                 <div className="p-4 bg-[#f4f4f4] rounded-t-lg">
-                    <h4 className="text-textBoldColor text-xm font-bold">Đánh Giá Cao</h4>
+                    <h4 className="text-textBoldColor text-xm font-bold">Thương hiệu</h4>
                 </div>
 
                 {/*Space hight rate*/}

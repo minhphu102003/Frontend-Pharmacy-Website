@@ -2,10 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const nav = [
-  { name: "Trang Chủ", path: "/" },
-  { name: "Danh Mục", path: "/spaces" },
-  { name: "Liên Hệ", path: "/contact" },
-  { name: "Chia Sẻ", path: "/sharing" },
+  { name: "NHAN TINH", path: "/" },
+  { name: "Danh Mục", path: "/listmedicine" },
+  { name: "Hệ thống nhà thuốc", path: "/spaces" },
+  { name: "Blog", path: "/blog" },
 ];
 
 const notActive =
@@ -15,7 +15,7 @@ const HeaderManage = () => {
   return (
     <div className="w-full flex">
       <div className="flex justify-center items-center font-bold bg-primaryColor text-white w-[256px] flex-none">
-        SharedSpaceFinder
+        Pharmacy
       </div>
       <div className="flex-auto">
         <div className="flex h-[60px] bg-primaryColor text-white">

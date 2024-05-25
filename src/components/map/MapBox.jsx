@@ -71,7 +71,7 @@ const MapBox = ({address = null}) => {
                 onMove={(evt => setViewPort(evt.viewState))}
             >
                 <Marker longitude={marker.longitude} latitude={marker.latitude}>
-                    <FontAwesomeIcon icon={faLocationDot} style={{color: "#ff0000", fontSize: '30px'}}/>
+                    <FontAwesomeIcon icon={faLocationDot} style={{color: "#388716", fontSize: '30px'}}/>
                 </Marker>
                 <GeolocateControl/>
                 <FullscreenControl/>

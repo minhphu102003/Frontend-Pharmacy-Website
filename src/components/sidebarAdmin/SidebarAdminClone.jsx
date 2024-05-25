@@ -52,9 +52,9 @@ const SidebarAdminClone = () => {
           to="/"
         >
           <img
-            src="/logoTransparent.png"
+            src="/logo.png"
             alt=""
-            className="h-[38px] w-[107px] scale-150 object-cover"
+            className="h-[50px] w-[80px] scale-150 object-cover"
           />
         </Link>
         <ul className="flex flex-col w-full">
@@ -101,7 +101,7 @@ const SidebarAdminClone = () => {
               }
             >
               <FontAwesomeIcon className="text-xl" icon={faUserTie} />
-              Chủ phòng
+              Nhân Viên
             </NavLink>
           </li>
           <li>
@@ -140,7 +140,7 @@ const SidebarAdminClone = () => {
                   </div>
                 )}
               </div>
-              Không gian chờ
+              Blog Đang Chờ 
             </NavLink>
           </li>
           <li>
@@ -155,7 +155,7 @@ const SidebarAdminClone = () => {
               }
             >
               <FontAwesomeIcon className="text-xl" icon={faSquareCheck} />
-              Không gian đã duyệt
+              Blog Đã Duyệt
             </NavLink>
           </li>
         </ul>

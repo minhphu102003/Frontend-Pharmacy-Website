@@ -5,12 +5,12 @@ import {useContext, useState} from "react";
 import MethodContext from "../../context/methodProvider"
 
 const ProffileEdit = ({setIsEdit, dataEdit}) => {
-    const [fullName, setFullName] = useState(dataEdit?.name || "")
+    const [username, setFullName] = useState(dataEdit?.username || "")
     const {notify, toastLoadingId, toastUpdateLoadingId} = useContext(MethodContext);
 
-    const [phone, setPhone] = useState(dataEdit?.phone || "")
-    const [dateOfBirth, setdateOfBirth] = useState(dataEdit?.dateOfBirth || "")
-    const [address, setAddress] = useState(dataEdit?.address || "")
+    const [phone, setPhone] = useState(dataEdit?.phoneNumber || "")
+    const [dateOfBirth, setdateOfBirth] = useState(dataEdit?.dob || "")
+    const [gender, setGender] = useState(dataEdit?.gender || "")
     const formData = new FormData();
     const [isLoading, setIsLoading] = useState(false)
     const [avartar, setAvartar] = useState(null);
@@ -22,10 +22,10 @@ const ProffileEdit = ({setIsEdit, dataEdit}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        formData.append("fullName", fullName);
+        formData.append("username", username);
         formData.append("phone", phone);
-        formData.append("address", address);
-        formData.append("dateOfBirth", dateOfBirth);
+        formData.append("gender", gender);
+        formData.append("dob", dateOfBirth);
         formData.append('avartar', avartar);
         console.log(dateOfBirth)
         // get token
@@ -69,7 +69,7 @@ const ProffileEdit = ({setIsEdit, dataEdit}) => {
                     >
                         <div className="flex w-full flex-col gap-4 py-6">
                             <InputReadOnly
-                                value={`#${dataEdit?.id}` || ""}
+                                value={`#${dataEdit?.user_id}` || ""}
                                 direction="flex-row"
                                 label="Mã Thành Viên"
                             />
@@ -84,7 +84,7 @@ const ProffileEdit = ({setIsEdit, dataEdit}) => {
                                     type="name"
                                     id="fullname"
                                     className="flex-auto rounded-md border border-gray-300 p-2 outline-none"
-                                    value={fullName}
+                                    value={username}
                                     onChange={(e) => setFullName(e.target.value)}
                                 />
                             </div>
@@ -128,15 +128,15 @@ const ProffileEdit = ({setIsEdit, dataEdit}) => {
                             </div>
                             <div className="flex">
                                 <label className="w-[192px] flex-none font-medium" htmlFor="diachi">
-                                    Địa chỉ
+                                    Giới Tính
                                 </label>
                                 <input
 
                                     type="text"
                                     id="diachi"
                                     className="flex-auto rounded-md border border-gray-300 p-2 outline-none"
-                                    value={address}
-                                    onChange={(e) => setAddress(e.target.value)}
+                                    value={gender}
+                                    onChange={(e) => setGender(e.target.value)}
                                 />
 
 

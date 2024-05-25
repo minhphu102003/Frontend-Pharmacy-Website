@@ -2,7 +2,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import React, {useState, useContext, useEffect} from "react";
-import Address from "../../components/selectAddress/Address";
 import {toast} from "react-toastify";
 import * as authService from "../../services/auth"
 import AuthContext from "../../context/authProvider";
@@ -16,11 +15,6 @@ const Register = () => {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [rePassword, setRePassword] = useState("")
-    const [address, setAddress] = useState("")
-    const [province, setProvince] = useState("")
-    const [district, setDistrict] = useState("")
-    const [ward, setWard] = useState("")
-    const [resetAddress, setResetAddress] = useState(false)
     const location = useLocation();
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false)
@@ -47,14 +41,7 @@ const Register = () => {
             return false;
         }
         return true;
-
     }
-
-    const checkAddressFormat = (address) => {
-        var addressParts = address.split(',').map(part => part.trim());
-        return addressParts.length === 4;
-    }
-
 
     // handle call api register
     const handleSubmit = async (e) => {
@@ -62,24 +49,17 @@ const Register = () => {
         // verify password before start another way
         if (!validationPassword(password, rePassword))
             return;
-        if(!checkAddressFormat(address)) {
-            notify("Vui lòng nhập địa chỉ đầy đủ!", "error");
-            return;
-        }
         const id = toastLoadingId("Đang chờ...")
         setIsLoading(true);
         // fetch register
-        const registerResponse = await authService.register(name, email, password, province, district, ward, address)
+        const registerResponse = await authService.register(name, email, password)
+        console.log(registerResponse);
         // check output and display error if has error
         if (registerResponse?.status === 200) {
             localStorage.setItem('register', JSON.stringify({
                 name,
                 email,
                 password,
-                province,
-                district,
-                ward,
-                address
             }));
             setIsLoading(false);
             navigate('/verify-email', {
@@ -112,13 +92,13 @@ const Register = () => {
                     <h1 className="pt-12 text-4xl text-primaryColor font-bold text-center">Đăng Ký</h1>
                     <div className="w-[400px] h-[200px] mb-9 overflow-hidden mx-auto">
                         <Link to={"/"}>
-                            <img className="w-full h-full object-cover"
-                                 src={require('../../assets/images/logoTransparent.png')} alt="Logo"/>
+                            <img className="w-[300px] h-full object-cover ml-12"
+                                 src={require('../../assets/images/logo.png')} alt="Logo"/>
                         </Link>
                     </div>
                     <div className="block md:flex md:justify-between">
-                        <div className="w-full md:w-[45%] ">
-                            <div className="w-full mb-4">
+                        <div className="w-full md:w-[90%] ">
+                            <div className="w-full mb-4 ml-8">
                                 <label className="block text-[18px] font-bold text-textBoldColor mb-2"
                                        htmlFor="inputEmail">Email</label>
                                 <input className="block w-full pl-4 pr-10 py-3 shadow rounded-xl outline-none"
@@ -131,7 +111,7 @@ const Register = () => {
                                        value={email}
                                        onChange={(e) => setEmail(e.target.value)}/>
                             </div>
-                            <div className="w-full mb-4">
+                            <div className="w-full mb-4 ml-8">
                                 <label className="block text-[18px] font-bold text-textBoldColor mb-2"
                                        htmlFor="inputFullName">Họ Và Tên</label>
                                 <input className="block w-full pl-4 pr-10 py-3 shadow rounded-xl outline-none"
@@ -144,7 +124,7 @@ const Register = () => {
                                 />
 
                             </div>
-                            <div className="relative w-full mb-4">
+                            <div className="relative w-full mb-4 ml-8">
                                 <label className="block text-[18px] font-bold text-textBoldColor mb-2"
                                        htmlFor="inputPassword">Mật Khẩu</label>
                                 <div className="w-full">
@@ -169,7 +149,7 @@ const Register = () => {
                                     }
                                 </div>
                             </div>
-                            <div className="relative w-full mb-4">
+                            <div className="relative w-full mb-4 ml-8">
                                 <label className="block text-[18px] font-bold text-textBoldColor mb-2"
                                        htmlFor="inputRePassword">Nhập Lại Mật Khẩu</label>
                                 <div className="w-full">
@@ -194,24 +174,6 @@ const Register = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full md:w-[45%] ">
-                            {/* Address */}
-                            <Address setAddress={setAddress} setResetAddress={setResetAddress} setProvince={setProvince}
-                                     setDistrict={setDistrict} setWard={setWard}/>
-
-                            <div className="w-full mb-4">
-                                <label className="block text-[18px] font-bold text-textBoldColor mb-2"
-                                       htmlFor="inputAdress">Địa Chỉ</label>
-                                <textarea
-                                    className="block w-full h-[100px] pl-4 pr-10 py-3 shadow rounded-xl outline-none"
-                                    id="inputAdress"
-                                    placeholder="địa chỉ"
-                                    required
-                                    value={address}
-                                    onChange={(e) => setAddress(e.target.value)}
-                                />
-                            </div>
-                        </div>
                     </div>
                     <div className=" mt-5">
                         <button
@@ -229,7 +191,7 @@ const Register = () => {
             <div className="h-full hidden lg:block  lg:col-span-5">
                 <img
                     className="w-full h-full object-cover"
-                    src="https://img.freepik.com/fotos-premium/diseno-hogar-moderno-fondo-jardin-cielo_741910-5826.jpg?w=2000"
+                    src="https://doctortrust.vn/photos/nha-thuoc-pharmacity-26qw-q9-ngu-hanh-son-da-nang-viet-nam1.jpeg"
                     alt="ảnh nhà"/>
             </div>
         </div>

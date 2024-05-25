@@ -20,3 +20,5 @@ export {default as Notifications} from './notifications/Notifications'
 export {default as Feedback} from './feedback/Feedback'
 export {default as EditSpace} from './editspace/EditSpace'
 export {default as ProfileEdit} from './profile/ProffileEdit'
+export {default as Blog} from './blog/Blog'
+export {default as ListMedicine} from './listMedicine/ListMedicine';

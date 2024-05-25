@@ -26,7 +26,7 @@ const LogIn = () => {
 
     const handleNavigate = (roles) => {
         roles.forEach(role => {
-            if (role?.authority === "Admin")
+            if (role?.authority === "admin")
                 navigate('/admin/dashboard', {state: {toastMessage: "Đăng Nhập Thành Công!" ,  statusMessage: "success"}})
             else
                 navigate('/', {state: {toastMessage: "Đăng Nhập Thành Công!",  statusMessage: "success"}});
@@ -107,8 +107,8 @@ const LogIn = () => {
                     <h1 className="pt-12 text-4xl text-primaryColor font-bold text-center">Đăng Nhập</h1>
                     <div className="w-full h-[200px] mb-9 overflow-hidden">
                         <Link to={"/"}>
-                            <img className="w-full h-full object-cover"
-                                 src={require('../../assets/images/logoTransparent.png')} alt="Logo"/>
+                            <img className="w-[300px] h-full object-cover ml-12"
+                                 src={require('../../assets/images/logo.png')} alt="Logo"/>
                         </Link>
                     </div>
                     <div className="w-full mb-4">
@@ -166,7 +166,7 @@ const LogIn = () => {
             <div className="h-screen hidden md:block lg:block md:col-span-6 lg:col-span-7">
                 <img
                     className="w-full h-full object-cover"
-                    src="https://img.freepik.com/fotos-premium/diseno-hogar-moderno-fondo-jardin-cielo_741910-5826.jpg?w=2000"
+                    src="https://prod-cdn.pharmacity.io/e-com/images/banners/20240517030651-0-ProbioticsPMCE_1590x604.png"
                     alt="ảnh nhà"/>
             </div>
         </div>

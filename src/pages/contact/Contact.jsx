@@ -55,22 +55,22 @@ const Contact = () => {
         <div>
             <div className="w-full h-[300px] relative mb-9">
                 <img className="w-full  h-full object-cover"
-                     src="https://khoinguonsangtao.vn/wp-content/uploads/2022/08/anh-thien-nhien-dep-nhat-the-gioi-chat-luong-cao.jpg"
+                     src="https://www.payoo.vn/img/content/2020/11/pc_banner_707x232.jpg"
                      alt="title"/>
-                <div className="absolute top-1/3 left-[10%]">
-                    <h1 className="text-2xl font-bold text-white">Chúng Tôi Rất Vui Được Phục Vụ Bạn</h1>
-                    <p className="text-xm font-medium text-white">Trang Chủ > Liên Hệ</p>
+                <div className="absolute top-1/3 left-[10%]">   
+                    <h1 className="text-2xl font-bold text-black">Pharmacy kinh chào quý khách</h1>
+                    <p className="text-xm font-medium text-black">Nhà thuốc 100% uy tín</p>
                 </div>
             </div>
             {/*Form Contact*/}
             <div className="max-w-[1200px] mx-auto px-10">
                 <TitlePart title="Liên Hệ Với Chúng Tôi" subTitle="Chúng Tôi Hỗ Trợ 24/7"
-                           subDesc="Khám phá đa dạng vô tận: Danh mục định hình thế giới"/>
+                           subDesc="Tận Tâm Vì Sức Khỏe - Uy Tín Trong Từng Viên Thuốc"/>
 
                 <form action="" className="mt-5" onSubmit={(e) => handleSendContact(e)}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <input className="px-3 py-2 border-[0.5px] border-gray-400 rounded outline-none" type="text"
-                               placeholder="Họ Và Họ Lót"
+                               placeholder="Họ"
                                required={true}
                                value={firstName}
                                onChange={(e) => setFirstName(e.target.value)}
@@ -82,7 +82,7 @@ const Contact = () => {
                                onChange={(e) => setLastName(e.target.value)}
                         />
                         <input className="px-3 py-2 border-[0.5px] border-gray-400 rounded outline-none" type="text"
-                               placeholder="email@gmail.com"
+                               placeholder="gmail"
                                pattern=".+@gmail\.com" size="30"
                                required={true}
                                value={email}
@@ -121,17 +121,17 @@ const Contact = () => {
                     <div className="col-span-12 md:col-span-6 lg:col-span-3 flex flex-col justify-center items-center">
                         <FontAwesomeIcon className="text-5xl text-primaryColor mb-3" icon={faPhone}/>
                         <p className="text-xm text-gray-400 mb-2">Số Điện Thoại</p>
-                        <p className="text-xl font-semibold text-textBoldColor">(+84) 0343 034 343 </p>
+                        <p className="text-xl font-semibold text-textBoldColor">(+84) 0123 404 404 </p>
                     </div>
                     <div className="col-span-12 md:col-span-6 lg:col-span-4 flex flex-col justify-center items-center">
                         <FontAwesomeIcon className="text-5xl text-primaryColor mb-3" icon={faEnvelope}/>
                         <p className="text-xm text-gray-400 mb-2">Email</p>
-                        <p className="text-xl font-semibold text-textBoldColor">sharedspacefinder@gmail.com </p>
+                        <p className="text-xl font-semibold text-textBoldColor">pharmacy@gmail.com </p>
                     </div>
                     <div className="col-span-12 lg:col-span-5 flex flex-col justify-center items-center">
                         <FontAwesomeIcon className="text-5xl text-primaryColor mb-3" icon={faMapLocationDot}/>
                         <p className="text-xm text-gray-400 mb-2">Địa Chỉ</p>
-                        <p className="text-xl font-semibold text-textBoldColor">254 Nguyễn Văn Linh,<br/>
+                        <p className="text-xl font-semibold text-textBoldColor">249 Trần Cao Vân,<br/>
                             Quận Thanh Khê - Tp. Đà Nẵng</p>
                     </div>
                 </div>

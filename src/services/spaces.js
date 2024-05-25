@@ -1,9 +1,9 @@
 import * as request from "../ultils/request";
 
-const SPACES_ENDPOINT = "/api/spaces/list-spaces";
-const UPDATE_ENDPOINT = "/api/spaces/update-space";
-const ACCEPT_ENDPOINT = "/api/spaces/accept-space";
-const DENIED_ENDPOINT = "/api/spaces/denied-space";
+const SPACES_ENDPOINT = "/api/blog/list-blog";
+const UPDATE_ENDPOINT = "/api/blog/update-blog";
+const ACCEPT_ENDPOINT = "/api/blog/accept-blog";
+const DENIED_ENDPOINT = "/api/blog/denied-blog";
 
 
 export const getSpace = async (paramsObject) => {
@@ -39,7 +39,7 @@ export const getSpace = async (paramsObject) => {
 //         return error
 //     }
 // };
-const UPDATE_SPACE_ENDPOINT = "/api/spaces/update-space"
+const UPDATE_SPACE_ENDPOINT = "/api/blog/update-space"
 
 export const updateSpace = async (spaceId,formData, accessToken) => {
     try {
@@ -60,7 +60,7 @@ export const updateSpace = async (spaceId,formData, accessToken) => {
     }
 };
 
-const POST_SPACES_ENDPOINT = "/api/spaces/create-space"
+const POST_SPACES_ENDPOINT = "/api/blog/create-space"
 
 export const createSpace = async (accessToken, formData) => {
   try {
@@ -116,7 +116,7 @@ export const deniedSpace = async (paramsObject, accessToken) => {
   }
 };
 
-const DELETESPACE_ENDPOINT = "/api/spaces/delete-space"
+const DELETESPACE_ENDPOINT = "/api/blog/delete-space"
 export const deleteSpace = async (spaceId, accessToken) => {
     try {
         const response = await request.deleteRe(DELETESPACE_ENDPOINT, {

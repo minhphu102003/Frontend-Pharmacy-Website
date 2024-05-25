@@ -50,11 +50,11 @@ const VerifyEmail = () => {
 
     const handleResendOTP = async (e) => {
         e.preventDefault();
-        const {name, email, password, province, district, ward, address} = user
+        const {name, email, password} = user
         const id = toastLoadingId("Vui lòng chờ...")
         setIsLoading(true)
         // fetch register
-        const registerResponse = await authService.register(name, email, password, province, district, ward, address)
+        const registerResponse = await authService.register(name, email, password)
         // check output and display error if has error
         if (registerResponse?.status === 200)
             toastUpdateLoadingId("Gửi OTP thành công!", "success", id)
@@ -67,15 +67,15 @@ const VerifyEmail = () => {
         e.preventDefault();
         if (!validationOTP())
             return;
-        const {name, email, password, province, district, ward, address} = user
+        const {name, email, password} = user
         const otpString = numberOne + numberTwo + numberThree + numberFour + numberFive + numberSix
         // fetch register
-        const registerResponse = await authService.verifyEmail(name, email, password, province, district, ward, address, otpString)
+        const registerResponse = await authService.verifyEmail(name, email, password, otpString)
         // check output and display error if has error
         if (registerResponse?.status === 201) {
             // set info in context
-            setAuth({name, email, password, province, district, ward, address})
-            localStorage.setItem('auth', JSON.stringify({name, email, province, district, ward, address}));
+            setAuth({name, email, password})
+            localStorage.setItem('auth', JSON.stringify({name, email}));
             localStorage.removeItem("register")
             // navigation to page login when register successful
             navigate('/login', {state: {toastMessage: "Đăng Ký Thành Công!", statusMessage: "success"}});

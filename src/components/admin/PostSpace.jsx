@@ -28,7 +28,7 @@ const PostSpace = () => {
         };
         const data = await spaceService.getSpace(param);
         setTotalPages(() => data?.data?.totalPages);
-        setSpaces(() => data?.data?.listSpaces || []);
+        setSpaces(() => data?.data?.listBlog || []);
     };
 
     useEffect(() => {
@@ -87,7 +87,7 @@ const PostSpace = () => {
                                 handleDeniedClick={handleDeniedSpace}
                             ></ItemSpace>
                         );
-                    }) : <p>Chưa có phòng nào!</p>}
+                    }) : <p>Chưa có blog nào!</p>}
                 <Pagination
                     itemsPerPage={itemPerPage}
                     setCurrentPage={setCurrentPage}
@@ -117,74 +117,80 @@ const ItemSpace = ({
 
     return (
         <>
-            <div className="flex rounded-2xl border border-b-[#E7ECF3] max-h-[300px]">
+            <div className="flex rounded-[10px] border border-b-[#E7ECF3] max-h-[200px]">
                 <div className="flex-shrink-0">
                     <img
-                        src={space?.images?.length > 0 ? space?.images[0].imageUrl : "https://i-connect.com.vn/data/news/7046/anh-14-mau-phong-tro-thiet-ke-hien-dai.jpg"}
+                        src={space?.images?.length > 0 ? space?.images[0].imageUrl : "https://data-service.pharmacity.io/pmc-upload-media/production/pmc-ecm-asm/posts/hoa-du-du-duc-2-2.webp"}
                         alt={space?.title || "Title"}
-                        className="h-full w-[400px] rounded-l-2xl object-cover"
+                        className="h-full w-[200px] rounded-l-2xl object-cover"
                     />
                 </div>
                 <div className="flex w-full flex-col gap-8 p-3">
                     <div className="">
                         <h2 className="text-xl text-primaryColor font-bold">
-                            {space.categoryId.categoryName.replaceAll('"', "")}
+                            {space?.title}
                         </h2>
                         <div className="flex items-center gap-2 text-black font-bold">
-                            <FontAwesomeIcon icon={faUser}/>
-                            <span>{space.ownerId.name || "Name Owner"}</span>
+                            <span>{space?.categoryName || "Người viết bài"}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-textBoldColor">
+                        <div className="flex items-center gap-2 text-black font-bold">
+                            <FontAwesomeIcon icon={faUser}/>
+                            <span>{space?.user || "Người viết bài"}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-black  ">
+                            <span>{space?.description || "Người viết bài"}</span>
+                        </div>
+                        {/* <div className="flex items-center gap-2 text-textBoldColor">
                             <FontAwesomeIcon icon={faLocationDot}/>
                             <span>
                             {[
-                                space.address.replaceAll('"', ""),
-                                space.district.replaceAll('"', ""),
-                                space.province.replaceAll('"', ""),
+                                space?.address,
+                                space?.district,
+                                space?.province,
                             ].join(", ")}
                           </span>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="flex justify-between w-full ">
                         <div className="flex flex-col gap-3">
-                            <div className="flex items-center gap-2 text-sm text-[#3B3E44]">
+                            {/* <div className="flex items-center gap-2 text-sm text-[#3B3E44]">
                                 <FontAwesomeIcon icon={faHouse}/>
-                                <span>{space.area || 12} m^2</span>
+                                <span>{space?.area || 12} m^2</span>
                             </div>
                             <div className="flex items-center gap-2 text-sm text-[#3B3E44]">
                                 <FontAwesomeIcon icon={faBed}/>
                                 <span>
-                                      {space.bathroomNumbers > 9
-                                          ? space.bathroomNumbers
-                                          : `0${space.bathroomNumbers}`}{" "}
+                                      {space?.bathroomNumbers > 9
+                                          ? space?.bathroomNumbers
+                                          : `0${space?.bathroomNumbers}`}{" "}
                                     Phòng ngủ
                                 </span>
                             </div>
                             <div className="flex items-center gap-2 text-sm text-[#3B3E44]">
                                 <FontAwesomeIcon icon={faBath}/>
                                 <span>
-                                      {space.bathroomNumbers > 9
-                                          ? space.bathroomNumbers
-                                          : `0${space.bathroomNumbers}`}{" "}
+                                      {space?.bathroomNumbers > 9
+                                          ? space?.bathroomNumbers
+                                          : `0${space?.bathroomNumbers}`}{" "}
                                     Phòng Tắm
                                 </span>
                             </div>
                             <div className="flex items-center gap-2 text-sm text-[#3B3E44]">
                                 <FontAwesomeIcon icon={faUsers}/>
-                                <span>{space.peopleNumbers || 12}</span>
-                            </div>
+                                <span>{space?.peopleNumbers || 12}</span>
+                            </div> */}
                         </div>
                         <div className="flex flex-col gap-5 self-end">
-                            <Link
-                                to={`/spaces/${space.id}`}
+                            {/* <Link
+                                to={`/spaces/${space?.id}`}
                                 className="flex items-center gap-2 text-[#84878B]"
                             >
                                 <span className="text-lg font-bold text-[#23262F]"> {
-                                    formatNumber(space.price) + "VNĐ"
+                                    formatNumber(space?.price) + "VNĐ"
                                 }
                                 </span>
                                 <span className="font-medium ">/ tháng</span>
-                            </Link>
+                            </Link> */}
 
                             {statusId === "3" && (
                                 <div className="flex gap-2 mt-4">

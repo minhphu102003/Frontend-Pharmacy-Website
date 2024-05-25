@@ -7,16 +7,16 @@ import Pagination from "./Pagination";
 
 const dataDropdown = [
     {
-        value: "R1",
-        text: "Admin",
+        value: "2",
+        text: "admin",
     },
     {
-        value: "R2",
-        text: "Owner",
+        value: "3",
+        text: "staff",
     },
     {
-        value: "R3",
-        text: "User",
+        value: "1",
+        text: "user",
     },
 ];
 
@@ -36,7 +36,7 @@ const Owner = () => {
         const fetchUser = async () => {
             const accessToken = JSON.parse(localStorage.getItem("access-token")).accessToken;
             const param = {
-                searchByRole: "Owner",
+                searchByRole: "staff",
                 page: currentPage,
                 limit: itemPerPage,
             };
@@ -57,17 +57,17 @@ const Owner = () => {
 
     const handleSubmitEdit = async () => {
         if (!owner) return;
-        if (owner.roles[0].roleCode === role) return;
+        if (owner.role === role) return;
         const accessToken = JSON.parse(localStorage.getItem("access-token")).accessToken;
         const param = {
-            userId: owner.id,
+            userId: owner.user_id,
             role: role,
         };
 
         const responseUser = await adminsService.updateUser(param, accessToken);
         console.log(responseUser);
         setOwners((owners) =>
-            owners.filter((ownerFilter) => ownerFilter.id !== owner.id),
+            owners.filter((ownerFilter) => ownerFilter.user_id !== owner.user_id),
         );
         setModalOpen(false);
     };
@@ -76,12 +76,12 @@ const Owner = () => {
     const deleteId = async () => {
         if (!owner) return;
         const accessToken = JSON.parse(localStorage.getItem("access-token")).accessToken;
-        const res = await deleteUserById(accessToken, owner.id);
+        const res = await deleteUserById(accessToken, owner.user_id);
         const userDelete = res.data.user;
         console.log(userDelete);
         const newOwners = [...owners];
         newOwners.splice(
-            newOwners.findIndex((user) => user.id === userDelete.id),
+            newOwners.findIndex((user) => user.user_id === userDelete.user_id),
             1,
         );
         setOwners(() => newOwners);
@@ -128,23 +128,23 @@ const Owner = () => {
                                         alt="avatar"
                                         className="object-cover rounded-full h-9 w-9"
                                     />
-                                    <span>{user.name}</span>
+                                    <span>{user.username}</span>
                                 </div>
                             </td>
                             <td className="py-3 pl-3">
-                                <span>{user.id}</span>
+                                <span>{user.user_id}</span>
                             </td>
                             <td className="py-3 pl-3">
                                 <span> {user.email}</span>
                             </td>
                             <td className="py-3 pl-3">
-                                <span>{user.phone}</span>
+                                <span>{user.phoneNumber}</span>
                             </td>
                             <td className="py-3 pl-3 truncate">
                                 <span>{user.address}</span>
                             </td>
                             <td className="py-3 pl-3">
-                                <span>{user.roles[0].roleValue}</span>
+                                <span>{user.role}</span>
                             </td>
                             <td className="py-3 pl-3 ml-auto rounded-r-xl">
                                 <div className="flex gap-2">
@@ -222,7 +222,7 @@ const Owner = () => {
                                                 <Dropdown
                                                     data={dataDropdown.filter(
                                                         (userFilter) =>
-                                                            userFilter.value !== owner.roles[0].roleCode,
+                                                            userFilter.value !== owner.role,
                                                     )}
                                                     setRole={setRole}
                                                 ></Dropdown>

@@ -4,7 +4,7 @@ import {FaPenToSquare} from "react-icons/fa6";
 import {IoMdNotificationsOutline} from "react-icons/io";
 import {PiShareFat} from "react-icons/pi";
 import {MdHistory} from "react-icons/md";
-const  {HiOutlineUsers,HiOutlineHeart,HiOutlineClipboardList,HiOutlinePencilAlt} = icons
+const  {HiOutlineUsers,HiOutlineTruck,HiOutlineClock,HiOutlineRefresh,HiOutlinePencilAlt,HiOutlineShoppingCart} = icons
 export const sidebarMenu = [
     {
         path: '/profile',
@@ -14,28 +14,28 @@ export const sidebarMenu = [
     {
         role: "owner",
         path: '/post-spaces',
-        text: 'Đăng bài cho thuê',
-        icons: <HiOutlinePencilAlt size={19}/>
+        text: 'Chờ xác nhận',
+        icons: <HiOutlineClock size={19}/>
     },
     {
 
         path: '/manage-post',
-        text: 'Quản lý bài đăng',
-        icons: <HiOutlineClipboardList size={19}/>
+        text: 'Chờ lấy hàng',
+        icons: <HiOutlineRefresh size={19}/>
     },
     {
         path: '/favorite-space',
-        text: 'Yêu thích',
-        icons: <HiOutlineHeart size={19} />
+        text: 'Chờ giao hàng',
+        icons: <HiOutlineTruck size={19} />
     },
     {
         path: '/my-sharing',
-        text: 'Chia sẻ của tôi',
-        icons:<PiShareFat size={19} />
+        text: 'Giỏ hàng',
+        icons:<HiOutlineShoppingCart size={19} />
     },
     {
         path: '/booking-history',
-        text: 'Lịch sử thuê phòng',
+        text: 'Lịch sử đặt hàng',
         icons: <MdHistory size={19}/>
     },
     {

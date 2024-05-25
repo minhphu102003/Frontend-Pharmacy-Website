@@ -21,7 +21,9 @@ import {
     Contact,
     Booking,
     Sharing,
-    SpaceDetailSharing
+    SpaceDetailSharing,
+    Blog,
+    ListMedicine
 } from '../pages/index';
 
 import Dashboard from '../components/admin/Dashboard';
@@ -32,6 +34,7 @@ import  {LayoutAdmin,LayoutAuth,LayoutUser} from "../layouts/index";
 import Notification from "../components/admin/Notification";
 const router = [
     { path: '/', component: Home },
+    { path: '/blog', component: Blog},
     { path: '/spaces', component: Spaces },
     { path: '/contact', component: Contact  },
     { path: '/login',layout: LayoutAuth ,component: LogIn },
@@ -41,6 +44,7 @@ const router = [
     { path: '/spaces/:spaceId', component: SpaceDetail },
     { path: '/booking', component: Booking },
     { path: '/sharing', component: Sharing },
+    { path: '/listmedicine' , component: ListMedicine},
     { path: '/profile',layout: LayoutUser,component: Editprofile },
     { path: '/post-spaces', layout: LayoutUser,component: PostSpaceHome },
     { path: '/messenger', layout: LayoutUser,component: MessengeHome },

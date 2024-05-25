@@ -69,7 +69,7 @@ export const deleteFeedback = async (feedbackId, accessToken) => {
 };
 
 
-const GET_FEEDBACK_ENDPOINT = "/api/feedback/list-feedback"
+const GET_FEEDBACK_ENDPOINT = "/api/medicine/list-medicine"
 
 export const getListFeedback = async (paramsObject) => {
     try {

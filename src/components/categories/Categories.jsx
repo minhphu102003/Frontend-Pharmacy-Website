@@ -7,7 +7,7 @@ const Categories = () => {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
 
-    const imagUrl= "https://afamilycdn.com/2017/photo-1-1507000784256.jpg";
+    const imagUrl= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLaQSNoj0FQyBprWy1nVktEw7j0Aq54OR47BABKOAW1Q&s";
 
     useEffect(() => {
         const fetchCategory = async () => {
@@ -39,17 +39,16 @@ const Categories = () => {
                 {
                     categories.length > 0 && categories.map(category => {
                         return (
-                                <div className="h-[250px] relative group rounded-xl hover:shadow-lg overflow-hidden"  key={category?.categorySpace?.id} onClick={ () => handleNavigate(category?.categorySpace?.id)}>
+                                <div className="h-[250px] relative group rounded-xl hover:shadow-lg overflow-hidden"  key={category?.id} onClick={ () => handleNavigate(category?.categorySpace?.id)}>
                                     <img
-                                        className="h-full w-full object-cover rounded-xl transition-all group-hover:rotate-6 group-hover:scale-125 group-hover:transform group-hover:origin-center "
-                                        src={imagUrl}
-                                        alt={category?.categorySpace?.categoryName}/>
+                                        className="h-full w-full object-cover rounded-xl transition-all group-hover:scale-110 group-hover:transform group-hover:origin-center "
+                                        src={category?.img||imagUrl}
+                                        alt={category?.categoryName}/>
+                                    {/* <div
+                                        className="absolute bg-black opacity-60 top-0 left-0 right-0 bottom-0 rounded-xl transition-all group-hover:top-3 group-hover:left-3 group-hover:bottom-3 group-hover:right-3"></div> */}
                                     <div
-                                        className="absolute bg-black opacity-60 top-0 left-0 right-0 bottom-0 rounded-xl transition-all group-hover:top-3 group-hover:left-3 group-hover:bottom-3 group-hover:right-3"></div>
-                                    <div
-                                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white text-center">
-                                        <p className="block font-bold text-xl">{category?.categorySpace?.categoryName}</p>
-                                        <span className="">{category?.categoryQuantity} Phòng</span>
+                                        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white text-center">
+                                        <p className="block font-bold text-xl">{category?.categoryName}</p>
                                     </div>
                                 </div>
                         )

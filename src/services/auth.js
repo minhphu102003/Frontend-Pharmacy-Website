@@ -2,17 +2,13 @@ import * as request from '../ultils/request'
 
 const REGISTER_ENDPOINT = "/api/auth/register"
 
-export const register = async (name, email, password, province, district, ward, address) => {
+export const register = async (name, email, password) => {
     try {
         const response = await request.post(REGISTER_ENDPOINT,
             {
                 name,
                 email,
                 password,
-                province,
-                district,
-                ward,
-                address
             },
             {
                 headers: {
@@ -29,17 +25,13 @@ export const register = async (name, email, password, province, district, ward, 
 
 
 const VERIFY_EMAIL_ENDPOINT = "/api/auth/verify-email"
-export const verifyEmail = async (name, email, password, province, district, ward, address, otp) => {
+export const verifyEmail = async (name, email, password, otp) => {
     try {
         const response = await request.post(VERIFY_EMAIL_ENDPOINT,
             {
                 name,
                 email,
                 password,
-                province,
-                district,
-                ward,
-                address,
                 otp
             },
             {

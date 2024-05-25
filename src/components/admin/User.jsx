@@ -8,16 +8,16 @@ import Pagination from "./Pagination";
 
 const dataDropdown = [
     {
-        value: "R1",
-        text: "Admin",
+        value: "2",
+        text: "admin",
     },
     {
-        value: "R2",
-        text: "Owner",
+        value: "3",
+        text: "staff",
     },
     {
-        value: "R3",
-        text: "User",
+        value: "1",
+        text: "user",
     },
 ];
 
@@ -37,7 +37,7 @@ const User = () => {
         const fetchUser = async () => {
             const accessToken = JSON.parse(localStorage.getItem("access-token")).accessToken;
             const param = {
-                searchByRole: "User",
+                searchByRole: "user",
             };
 
             const responseUser = await adminsService.getUser(param, accessToken);
@@ -60,10 +60,10 @@ const User = () => {
 
     const handleSubmitEdit = async () => {
         if (!user) return;
-        if (user.roles[0].roleCode === role) return;
+        if (user.role_id === role) return;
         const accessToken = JSON.parse(localStorage.getItem("access-token")).accessToken;
         const param = {
-            userId: user.id,
+            userId: user.user_id,
             role: role,
         };
 
@@ -71,7 +71,7 @@ const User = () => {
         console.log(responseUser);
         if (responseUser.status === HttpStatusCode.Ok) {
             setUsers((users) =>
-                users.filter((userFilter) => userFilter.id !== user.id),
+                users.filter((userFilter) => userFilter.user_id !== user.user_id),
             );
         }
 
@@ -82,12 +82,12 @@ const User = () => {
     const deleteId = async () => {
         if (!user) return;
         const accessToken = JSON.parse(localStorage.getItem("access-token")).accessToken;
-        const res = await deleteUserById(accessToken, user.id);
+        const res = await deleteUserById(accessToken, user.user_id);
         const userDelete = res.data.user;
         console.log(userDelete);
         const newUsers = [...users];
         newUsers.splice(
-            newUsers.findIndex((user) => user.id === userDelete.id),
+            newUsers.findIndex((user) => user.user_id === userDelete.user_id),
             1,
         );
         setUsers(() => newUsers);
@@ -133,23 +133,23 @@ const User = () => {
                                         alt="avatar"
                                         className="object-cover rounded-full h-9 w-9"
                                     />
-                                    <span>{user.name}</span>
+                                    <span>{user.username}</span>
                                 </div>
                             </td>
                             <td className="py-3 pl-3">
-                                <span>{user.id}</span>
+                                <span>{user.user_id}</span>
                             </td>
                             <td className="py-3 pl-3">
                                 <span> {user.email}</span>
                             </td>
                             <td className="py-3 pl-3">
-                                <span>{user.phone}</span>
+                                <span>{user.phoneNumber}</span>
                             </td>
                             <td className="py-3 pl-3">
                                 <span>{user.address}</span>
                             </td>
                             <td className="py-3 pl-3">
-                                <span>{user.roles[0].roleValue}</span>
+                                <span>{user.role}</span>
                             </td>
                             <td className="py-3 pl-3 ml-auto rounded-r-xl">
                                 <div className="flex gap-2">
@@ -227,7 +227,7 @@ const User = () => {
                                                 <Dropdown
                                                     data={dataDropdown.filter(
                                                         (userFilter) =>
-                                                            userFilter.value !== user.roles[0].roleCode,
+                                                            userFilter.value !== user.role,
                                                     )}
                                                     setRole={setRole}
                                                 ></Dropdown>
