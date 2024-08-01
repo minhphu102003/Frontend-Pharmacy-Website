@@ -56,12 +56,11 @@ const MapBox = ({address = null}) => {
             });
         }
 
-    }, [])
+    }, []);
 
     return (
         <div className="">
             <ReactMapLG
-                import={'reactMap-gl'}
                 {...viewPort}
                 style={{width: "100%", height: 500}}
 
@@ -78,7 +77,6 @@ const MapBox = ({address = null}) => {
                 <NavigationControl/>
             </ReactMapLG>
         </div>
-
     );
 };
 

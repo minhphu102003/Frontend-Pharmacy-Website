@@ -1,4 +1,6 @@
-import { HiOutlineUsers,HiOutlineRefresh,HiOutlineShoppingCart,HiOutlineClock,HiOutlineTruck,HiOutlineX,HiOutlineUser  ,HiOutlineChatAlt,HiOutlineHeart,HiOutlineBookmark,HiOutlineClipboardList,HiOutlinePencilAlt,HiOutlineMinus, HiOutlinePlus,HiOutlineTrash} from 'react-icons/hi'
+import { HiOutlineUsers,HiOutlineRefresh,HiOutlineShoppingCart,HiOutlineClock,HiOutlineTruck,HiOutlineX
+    ,HiOutlineUser  ,HiOutlineChatAlt,HiOutlineHeart,HiOutlineBookmark,HiOutlineClipboardList,HiOutlinePencilAlt
+    ,HiOutlineMinus, HiOutlinePlus,HiOutlineTrash} from 'react-icons/hi'
 
 
 const icons ={
